@@ -12,3 +12,4 @@ deploy:
   file: dist/app.zip
   on:
     repo: DeskproApps/labs-reply-requirements
+    tags: true
