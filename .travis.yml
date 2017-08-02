@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '6'
+install:
+- npm install && npm install @deskproapps/dpat@0.4.12
+script:
+- npm run package
+deploy:
+  provider: releases
+  api_key:
+    secure: rKDeLykN0V2Yvrjy+V+avAR0Ebmbcgyjq9hmCERzakrRLycXuN5xUwg4nQ07BKsZIFX4v2jW9KMc6piGnBiF8Khb7SWpE1v+ACVbD6kIkcpIlr7MjKE3rjjt8JijQrxf5/5zIc3uGvCE71eZ70WrsC/NGsIu3qUKIsdYELaQsk9Fw9ooWFRdIoJsaAOYlEh528fhPYAz93nA3fmzuFhMDkTN6x4Iu3Sdoh/1kacYlvJzbid0ZkJdI/LzdeNzHd5gswAWDNRrTsEhW2MxpGP3WRZ69Ki+j4gukGW6glfMyn/e28UJEZBy3s6Lvn/g1ua9VupT7CqYw53cpsanT21hsASD86rDwx+3RspCJCv9NkWG7uGdx+z+xFJf86934xB0cjiAYn+d16zlkXu5Aj5UuEiwB3N08SBQLvTzwOrhT+bzIo7lON5tzkkBRukPeqb8tCNJk8XJ3ExbJznir4VhqE56pWPQ7MTe8eEI0wgRwKSLUX1/dILVMenFX/qeXL12GcSEAuVpTpavbDnHedDN9J99AP+B5lyqQh+kcLmUNTeL5mJCTfYuch81AWq8oSGCUeSOwoOgjKHRZ2xzWXtMRKK6V5k/SVS5sd6MHO196pkYZv03RdwqeejGDftYH32YiHnfP7okyezU3FFIL48PKjPzA31Bo4LrBAINDmUwgO0=
+  file: dist/app.zip
+  on:
+    repo: DeskproApps/labs-reply-requirements
