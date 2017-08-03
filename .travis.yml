@@ -2,15 +2,17 @@ language: node_js
 node_js:
 - '6'
 install:
-- npm install && npm install @deskproapps/dpat@0.4.12
+- travis_retry npm install
+- travis_retry npm install @deskproapps/dpat@0.4.12
 script:
 - npm run package
+before_deploy:
+- mv dist/app.zip dist/deskpro-app-labs-reply-requirements-${TRAVIS_TAG}.zip
 deploy:
   skip_cleanup: true
   provider: releases
   api_key:
-    secure: rKDeLykN0V2Yvrjy+V+avAR0Ebmbcgyjq9hmCERzakrRLycXuN5xUwg4nQ07BKsZIFX4v2jW9KMc6piGnBiF8Khb7SWpE1v+ACVbD6kIkcpIlr7MjKE3rjjt8JijQrxf5/5zIc3uGvCE71eZ70WrsC/NGsIu3qUKIsdYELaQsk9Fw9ooWFRdIoJsaAOYlEh528fhPYAz93nA3fmzuFhMDkTN6x4Iu3Sdoh/1kacYlvJzbid0ZkJdI/LzdeNzHd5gswAWDNRrTsEhW2MxpGP3WRZ69Ki+j4gukGW6glfMyn/e28UJEZBy3s6Lvn/g1ua9VupT7CqYw53cpsanT21hsASD86rDwx+3RspCJCv9NkWG7uGdx+z+xFJf86934xB0cjiAYn+d16zlkXu5Aj5UuEiwB3N08SBQLvTzwOrhT+bzIo7lON5tzkkBRukPeqb8tCNJk8XJ3ExbJznir4VhqE56pWPQ7MTe8eEI0wgRwKSLUX1/dILVMenFX/qeXL12GcSEAuVpTpavbDnHedDN9J99AP+B5lyqQh+kcLmUNTeL5mJCTfYuch81AWq8oSGCUeSOwoOgjKHRZ2xzWXtMRKK6V5k/SVS5sd6MHO196pkYZv03RdwqeejGDftYH32YiHnfP7okyezU3FFIL48PKjPzA31Bo4LrBAINDmUwgO0=
-  file: dist/app.zip
+    secure: Pqzh8P151K7ihvzpvyU6S2f5KLe3/2tmtVy7jgiipJI9wn8pBThND1l9lOgQ31fsVcLHxe1BAd2pg4ce8SOFxeum5LtF5gdFNYdt3rKceQ/1kVUemQ96Hz7OVggEkjtyE3jxsxWRT3xx3B5wORw344gvo4vtorpZsdxeWCKUsVNaeRFlL8ai+2Dm72zcMr1al236L4sAw69ROx2EfdstNI7H5xHzcBAGbZ2p+Baocmbg0phA/7oSeWjDHv8tywvrO4AdnNTJavMh7QfPiDBukK/Av1U1hZ6gEoMPwMznhdZTWMN0cswq0Dg80+e7Y0FnMtKEJhfqs2F7MfPtK63OD93YwV6chOBs4AlnMHAylbO653DbDI2ugKHLsV2s8Vo8aT2tFBu6SU2ajKxRAielMCqdau4hyLYSeIHbE+XvrXolYFyKx1JuVRt7N01ha3w11CPC3RbjkavgsPlnY3lAcH0tDMaetYJ48RJRargfQwGIuJKrn2UM5nQ4t4D8A33IuTd1srY9A5sa1F6l+l8fdc7yu00SAwiuNXpUZiBeA/Qx7davqrO2NkHTMBLSkdmrpufWCu3KiCbWvMPwl3Ef4GBlHKm1ly7g4y6eyMpiWrHlGNyGH23oHVL7hQKVEcn2ccpHBhXregotpBmFeqXK0HHXj+xUL+ZAsvSvn7JxAZs=
+  file: dist/deskpro-app-labs-reply-requirements-${TRAVIS_TAG}.zip
   on:
-    repo: DeskproApps/labs-reply-requirements
     tags: true
