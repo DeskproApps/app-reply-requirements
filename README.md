@@ -2,33 +2,35 @@
 
 Allow an agent to reply only if a set of rules is satisfied.
 
-## Prerequisites
+## Contents
+- [Installation](#installation)
+- [Development](#development)
+- [Packaging](#packaging)
+- [Online documentation](https://deskproapps.github.io/labs-reply-requirements)
 
-Make sure you have an up to date version of node, preferably version 6.x.x
-
-Make sure you have the latest Deskpro Apps Tool, installed globally
-
-    npm install -g  @deskproapps/dpat
-
-
-## Getting started
-
+## Installation
     
-### Start the development server    
+This project requires [Deskpro Apps Tool](https://github.com/deskpro/deskproapps-dpat) to be installed alongside the other dependencies. You can install [Deskpro Apps Tool](https://github.com/deskpro/deskproapps-dpat) either locally or globally. We recommend to install it globally so you have it always availabe
     
+To install the dependencies and [Deskpro Apps Tool](https://github.com/deskpro/deskproapps-dpat) locally, run:
+    
+    npm install && npm install @deskproapps/dpat   
+
+If you already have [Deskpro Apps Tool](https://github.com/deskpro/deskproapps-dpat) installed, run:
+ 
+    npm install
+
+## Development
+             
 In your project folder run    
     
-    npm install && dpat server .
-
-You can also give **dpat** the full path to your project folder 
-
+    npm run dev
+ 
 Go to your deskpro installation, login to the agent interface, and navigate to the link below: 
     
     https://your-local-deskpro.com/agent/?appstore.environment=development
 
 Notice the **appstore.environment=development** query parameter that tells Deskpro to load your application from the development server
-
-Click on a ticket and you should see the right hand side panel opening, showing your development application
 
 ### Changing the default application
  
@@ -39,6 +41,24 @@ To start making changes, open the following file in  your favourite editor.
 While the development server is on,  any change will cause the application to be reloaded in the Deskpro window, giving 
 you a nice live preview.
 
-## Documentation
+## Packaging
 
- View online docs at: https://deskproapps.github.io/app-reply-requirements
+Once you are satisfied with your application, you will probably want to install it on your production or test installation of [DeskPRO](https://www.deskpro.com).
+To do that, you must package your application files in a distribution package that can be understood by [DeskPRO](https://www.deskpro.com) when it will install your application,
+
+To package the application, in your project folder run:    
+    
+    npm run package
+
+This will create a `dist` folder inside your project folder which contains all the unpacked and compiled assets
+and a zip file named `app.zip`. This `app.zip` file is the one required to install your application via the DeskPro admin interface. 
+
+
+## Prerequisites
+
+Make sure you have an up to date version of node, preferably version 6.x.x
+
+Make sure you have the latest Deskpro Apps Tool, installed globally
+
+    npm install -g  @deskproapps/dpat
+
