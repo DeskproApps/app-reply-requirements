@@ -10,7 +10,6 @@ export default class App extends React.Component
 
   componentDidMount() {
     const { dpapp } = this.props;
-
     dpapp.context.on('context.ticket.reply', (sendResponse, tabData) => {
       const { api_data: ticket } = tabData;
       const response = this.onTicketReply(ticket, tabData);
